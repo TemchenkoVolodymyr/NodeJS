@@ -20,6 +20,8 @@ const ErrorHandler = require('./Errors/ErrorHandler');
 const errorMidl = require('./Errors/errorMiddlewera')
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+
+
 // NDB - tools который помогает работать с ошибками в Node.js
 // npm i ndb
 //  in package.json I should write this code ---- "debug": "ndb server.js";
@@ -41,7 +43,7 @@ app.use(morgan('dev'))
 
 //////////////////////// SET LIMIT requests
 const limiter = rateLimit({
-  max: 100,
+  max: 400,
   windowMs:60*60*1000,    // Тут указываем время через которое лимит обновится
   message:"Too many requests, try again later" // сообщение в случае превышения лимита
 });
@@ -70,12 +72,30 @@ const userRouter = require('./Routers/UserRouts');
 const reviewRouter = require('./Routers/ReviewRouts');
 const bookRouter = require('./Routers/BookRouts');
 const hireMeRouter = require("./Routers/HireMeRouts");
+const pizzaRouter = require("./Routers/Pizza/PizzaRouts");
+const drinkRouter = require("./Routers/Pizza/ItemDrinkRouts");
+const burgerRouter = require("./Routers/Pizza/itemBurgerRouts");
+const pastaRouter = require("./Routers/Pizza/itemPastaRouts");
+const blogRouter = require("./Routers/Blog/BlogRouts")
+const arabicMeetRouter = require("./Routers/Blog/ArabicMeetRouts")
+const booksPizzaRouter = require("./Routers/Blog/BooksPizzaRouts")
+const formRouter = require("./Routers/Form/FormRouts")
+
 
 app.use("/api/v1/tours", tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/book", bookRouter);
 app.use("/api/v1/hireMe", hireMeRouter);
+app.use("/api/v1/pizza", pizzaRouter);
+app.use("/api/v1/drink", drinkRouter);
+app.use("/api/v1/pasta", pastaRouter);
+app.use("/api/v1/burger", burgerRouter);
+app.use("/api/v1/italianMeet", blogRouter);
+app.use("/api/v1/arabicMeet", arabicMeetRouter);
+app.use("/api/v1/booksPizzaMeet", booksPizzaRouter);
+app.use("/api/v1/form", formRouter);
+
 
 
 // 4) ERROR HANDLER
