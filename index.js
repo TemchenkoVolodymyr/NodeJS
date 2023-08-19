@@ -95,6 +95,9 @@ app.use("/api/v1/italianMeet", blogRouter);
 app.use("/api/v1/arabicMeet", arabicMeetRouter);
 app.use("/api/v1/booksPizzaMeet", booksPizzaRouter);
 app.use("/api/v1/form", formRouter);
+app.get('/', (req,res) => {
+  res.send('<h1>Asdsadas</h1>')
+})
 
 
 
