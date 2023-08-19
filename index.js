@@ -108,7 +108,6 @@ app.all('*', (req, res,next) => {
 
 
 // Error middleware
-// Если в метод use передать 4 параметра то Express автоматические принимает это за метод ошибки
 app.use(errorMidl)
 
 
